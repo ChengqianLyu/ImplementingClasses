@@ -157,10 +157,12 @@ class Point(object):
         return Point(self.x, self.y)
 
     def move_to(self,x,y):
+        self.bmx = self.x
+        self.bmy = self.y
         self.x = x
         self.y = y
         self.moves = self.moves + 1
-        self.distance = self.distance + math.sqrt((self.x - self.originalx)**2 + (self.y - self.originaly)**2)
+        self.distance = self.distance + math.sqrt((self.x - self.bmx)**2 + (self.y - self.bmy)**2)
 
     def move_by(self,dx,dy):
         self.x = self.x + dx
