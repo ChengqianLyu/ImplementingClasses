@@ -148,6 +148,8 @@ class Point(object):
         self.moves = 0
         self.originalx = self.x
         self.originaly = self.y
+        self.distance = 0
+
     def __repr__(self):
         return 'Point('+str(self.x)+','+str(self.y)+')'
 
@@ -158,11 +160,13 @@ class Point(object):
         self.x = x
         self.y = y
         self.moves = self.moves + 1
+        self.distance = self.distance + math.sqrt((self.x - self.originalx)**2 + (self.y - self.originaly)**2)
 
     def move_by(self,dx,dy):
         self.x = self.x + dx
         self.y = self.y + dy
         self.moves = self.moves + 1
+        self.distance = self.distance + math.sqrt(dx**2 + dy**2)
 
     def get_number_of_moves_made(self):
         return self.moves
@@ -179,8 +183,9 @@ class Point(object):
 
         return math.sqrt((self.x - self.originalx)**2 + (self.y - self.originaly)**2)
 
-    def get_distance_from_traveled(self):
-
+    def get_distance_traveled(self):
+        D = self.distance
+        return D
 
 def test_repr():
     """
